@@ -64,4 +64,23 @@ contract Twitter {
   // ) external view returns (Tweet[] memory) {
   //   return _tweetsByAuthor[_author];
   // }
+
+  /**
+   * A function to get all the tweets
+   */
+  function getTweets() external view returns (Tweet[] memory) {
+    return _tweets;
+  }
+
+  /**
+   * A function to edit a tweet
+   * @param _id The id of the tweet to edit
+   */
+  function editTweet(uint _id, string memory _newContent) external {
+    require(
+      _tweets[_id].author == msg.sender,
+      'You are not the author of this tweet'
+    );
+    _tweets[_id].content = _newContent;
+  }
 }
