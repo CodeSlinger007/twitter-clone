@@ -16,6 +16,14 @@ contract Twitter {
    */
   // mapping(address => Tweet[]) public _tweetsByAuthor;
 
+  modifier isAuthor(uint _id) {
+    require(
+      _tweets[_id].author == msg.sender,
+      'You are not the author of this tweet'
+    );
+    _;
+  }
+
   /**
    * A function that allows users to create a new tweet
    * @param _content The content of the tweet
@@ -76,11 +84,10 @@ contract Twitter {
    * A function to edit a tweet
    * @param _id The id of the tweet to edit
    */
-  function editTweet(uint _id, string memory _newContent) external {
-    require(
-      _tweets[_id].author == msg.sender,
-      'You are not the author of this tweet'
-    );
+  function editTweet(
+    uint _id,
+    string memory _newContent
+  ) external isAuthor(_id) {
     _tweets[_id].content = _newContent;
   }
 }
