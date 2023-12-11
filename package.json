@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx hardhat test",
-    "deploy": "npx hardhat run scripts/deploy.js"
+    "deploy:goerli": "npx hardhat run scripts/deploy.js --network goerli"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,15 @@
   "homepage": "https://github.com/CodeSlinger007/twitter-clone#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^3.0.0",
-    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts": "^4.9.5",
     "eslint": "^8.53.0",
     "hardhat": "^2.19.0",
     "prettier": "3.1.0"
   },
   "directories": {
     "test": "test"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
   }
 }
